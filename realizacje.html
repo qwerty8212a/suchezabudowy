@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Realizacje - Slider Przed i Po</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            text-align: center;
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 50px 20px;
+        }
+        h1 {
+            font-size: 2.2em;
+            margin: 0;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .slider-container {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            gap: 10px;
+        }
+        .slider img {
+            width: calc(50% - 5px);
+            height: auto;
+        }
+        .slider-label {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+        .slider-label.left {
+            left: 25%;
+            transform: translateX(-25%);
+        }
+        .slider-label.right {
+            left: 75%;
+            transform: translateX(-75%);
+        }
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .navigation button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SucheZabudowy sp. z o.o.</h1>
+        <p class="subtitle">Generalny Wykonawca | Remonty pod klucz</p>
+        <hr><br>
+	<p class="subtitle">Sowińskiego, Katowice</p>
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012053.jpg" alt="Stan przed remontem 1">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012054.jpg" alt="Stan po remoncie 1">
+                </div>
+                <div class="slide">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012055.jpg" alt="Stan przed remontem 2">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012056.jpg" alt="Stan po remoncie 2">
+                </div>
+                <!-- Możesz dodać więcej zdjęć przed i po tutaj -->
+            </div>
+            <div class="slider-label left">Przed</div>
+            <div class="slider-label right">Po</div>
+            <div class="navigation">
+                <button id="prev">&#10094;</button>
+                <button id="next">&#10095;</button>
+            </div>
+        </div>
+	<br>
+	<p class="subtitle">Niedurnego, Katowice</p>
+        <div class="slider-container">
+            <div class="slider" id="slider2">
+                <div class="slide">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012053.jpg" alt="Stan przed remontem 1">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012054.jpg" alt="Stan po remoncie 1">
+                </div>
+                <div class="slide">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012055.jpg" alt="Stan przed remontem 2">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012056.jpg" alt="Stan po remoncie 2">
+                </div>
+                <!-- Możesz dodać więcej zdjęć przed i po tutaj -->
+            </div>
+            <div class="slider-label left">Przed</div>
+            <div class="slider-label right">Po</div>
+            <div class="navigation">
+                <button id="prev2">&#10094;</button>
+                <button id="next2">&#10095;</button>
+            </div>
+        </div>
+    </div>
+<br>
+<p class="subtitle">Niedurnego, Katowice</p>
+        <div class="slider-container">
+            <div class="slider" id="slider2">
+                <div class="slide">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012053.jpg" alt="Stan przed remontem 1">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012054.jpg" alt="Stan po remoncie 1">
+                </div>
+                <div class="slide">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012055.jpg" alt="Stan przed remontem 2">
+                    <img src="C:\Users\skyje\Desktop\strona sz\Zdjęcia\Niedurnego\1000012056.jpg" alt="Stan po remoncie 2">
+                </div>
+                <!-- Możesz dodać więcej zdjęć przed i po tutaj -->
+            </div>
+            <div class="slider-label left">Przed</div>
+            <div class="slider-label right">Po</div>
+            <div class="navigation">
+                <button id="prev2">&#10094;</button>
+                <button id="next2">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slider = document.getElementById('slider');
+        
+        document.getElementById('next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+        
+        document.getElementById('prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+        
+        let currentIndex2 = 0;
+        const slides2 = document.querySelectorAll('#slider2 .slide');
+        const slider2 = document.getElementById('slider2');
+        
+        document.getElementById('next2').addEventListener('click', () => {
+            currentIndex2 = (currentIndex2 + 1) % slides2.length;
+            slider2.style.transform = `translateX(-${currentIndex2 * 100}%)`;
+        });
+        
+        document.getElementById('prev2').addEventListener('click', () => {
+            currentIndex2 = (currentIndex2 - 1 + slides2.length) % slides2.length;
+            slider2.style.transform = `translateX(-${currentIndex2 * 100}%)`;
+        });
+    </script>
+</body>
+</html>
