@@ -48,8 +48,9 @@
             gap: 10px;
         }
         .slider img {
-            width: calc(50% - 5px);
+            width: 100%;
             height: auto;
+            object-fit: cover;
         }
         .slider-label {
             position: absolute;
@@ -114,9 +115,6 @@
                     <img src="Images/Sowińskiego/1000012086.jpg" alt="Stan po remoncie 5">
                 </div>
 
-
-		    
-                <!-- Możesz dodać więcej zdjęć przed i po tutaj -->
             </div>
             <div class="slider-label left">Przed</div>
             <div class="slider-label right">Po</div>
@@ -142,20 +140,6 @@
         document.getElementById('prev').addEventListener('click', () => {
             currentIndex = (currentIndex - 1 + slides.length) % slides.length;
             slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        });
-        
-        let currentIndex2 = 0;
-        const slides2 = document.querySelectorAll('#slider2 .slide');
-        const slider2 = document.getElementById('slider2');
-        
-        document.getElementById('next2').addEventListener('click', () => {
-            currentIndex2 = (currentIndex2 + 1) % slides2.length;
-            slider2.style.transform = `translateX(-${currentIndex2 * 100}%)`;
-        });
-        
-        document.getElementById('prev2').addEventListener('click', () => {
-            currentIndex2 = (currentIndex2 - 1 + slides2.length) % slides2.length;
-            slider2.style.transform = `translateX(-${currentIndex2 * 100}%)`;
         });
     </script>
 </body>
